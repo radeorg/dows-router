@@ -33,6 +33,9 @@
         <module>router-biz</module>
         <module>router-handler</module>
         <module>router-dao</module>
+        <module>router-email</module>
+        <module>router-llm</module>
+        <module>router-sms</module>
     </modules>
 
     <dependencyManagement>
