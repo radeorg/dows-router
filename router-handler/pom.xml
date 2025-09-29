@@ -24,24 +24,6 @@
             <artifactId>router-dao</artifactId>
             <version>${project.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.dows.router</groupId>
-            <artifactId>router-email</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.dows.router</groupId>
-            <artifactId>router-sms</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.dows.router</groupId>
-            <artifactId>router-llm</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
@@ -50,7 +32,50 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>checker-qual</artifactId>
+            <version>3.42.0</version>
+            <scope>compile</scope>
+        </dependency>
 
+        <dependency>
+            <groupId>io.debezium</groupId>
+            <artifactId>debezium-embedded</artifactId>
+            <version>3.2.3.Final</version>
+        </dependency>
+
+        <!-- MySQL连接器 -->
+        <dependency>
+            <groupId>io.debezium</groupId>
+            <artifactId>debezium-connector-mysql</artifactId>
+            <version>3.2.3.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.debezium</groupId>
+            <artifactId>debezium-ddl-parser</artifactId>
+            <version>3.2.3.Final</version>
+        </dependency>
+
+        <!-- 数据库驱动 (MySQL 8.0+) -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.2.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dows.router</groupId>
+            <artifactId>router-email</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
     </dependencies>
 </project>
