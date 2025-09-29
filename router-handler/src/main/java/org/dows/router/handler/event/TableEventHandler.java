@@ -12,7 +12,17 @@ public interface TableEventHandler<T> {
     String getTableName();
 
 
-    void handle(String op, JSONObject before, JSONObject after);
+    default void handle(String op, JSONObject before, JSONObject after){
+        if(op.equals("c")){
+            insertHandle(op, before, after);
+        } else if(op.equals("u")){
+            updateHandle(op, before, after);
+        } else if(op.equals("d")){
+            deleteHandle(op, before, after);
+        } else if(op.equals("q")){
+            queryHandle(op, before, after);
+        }
+    };
 
     default void insertHandle(String op, JSONObject before, JSONObject after) {
     }
