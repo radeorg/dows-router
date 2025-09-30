@@ -31,6 +31,7 @@ dows-router/
 ## 数据库表结构
 
 ### 核心表
+
 - `router_data` - 路由数据表
 - `router_session` - 路由会话表
 - `router_channel` - 路由通道表
@@ -51,11 +52,13 @@ dows-router/
 ### 2. 数据库初始化
 
 #### MySQL
+
 ```bash
 mysql -u root -p < router-dao/src/main/resources/sql/mysql/schema.sql
 ```
 
 #### PostgreSQL
+
 ```bash
 psql -U postgres -f router-dao/src/main/resources/sql/postgresql/schema.sql
 ```

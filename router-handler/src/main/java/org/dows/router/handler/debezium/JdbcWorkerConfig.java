@@ -7,23 +7,18 @@ import java.util.Map;
 
 public class JdbcWorkerConfig extends WorkerConfig {
 
-    private static final ConfigDef CONFIG;
-
     /**
      * The jdbc info of the offset storage jdbc.
      */
     public static final String OFFSET_STORAGE_JDBC_URL_CONFIG = "offset.storage.jdbc.connection.url";
-    private static final String OFFSET_STORAGE_JDBC_URL_DOC = "database to store source connector offsets";
-
     public static final String OFFSET_STORAGE_JDBC_USER_CONFIG = "offset.storage.jdbc.connection.user";
-    private static final String OFFSET_STORAGE_JDBC_USER_DOC = "database of user to store source connector offsets";
-
     public static final String OFFSET_STORAGE_JDBC_PASSWORD_CONFIG = "offset.storage.jdbc.connection.password";
-    private static final String OFFSET_STORAGE_JDBC_PASSWORD_DOC = "database of password to store source connector offsets";
-
     public static final String OFFSET_STORAGE_JDBC_TABLE_NAME_CONFIG = "offset.storage.jdbc.table.name";
+    private static final ConfigDef CONFIG;
+    private static final String OFFSET_STORAGE_JDBC_URL_DOC = "database to store source connector offsets";
+    private static final String OFFSET_STORAGE_JDBC_USER_DOC = "database of user to store source connector offsets";
+    private static final String OFFSET_STORAGE_JDBC_PASSWORD_DOC = "database of password to store source connector offsets";
     private static final String OFFSET_STORAGE_JDBC_TABLE_NAME_DOC = "table name to store source connector offsets";
-
 
 
     static {

@@ -2,7 +2,6 @@ package org.dows.router.config.admin;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.dows.router.common.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,52 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.dows.router</groupId>
+        <groupId>org.dows.cloud</groupId>
         <artifactId>dows-router</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
-
     <artifactId>router-app</artifactId>
-    <name>router-app</name>
-    <description>启动模块</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.dows.router</groupId>
+            <groupId>org.dows.cloud</groupId>
             <artifactId>router-rest</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.dows.router</groupId>
+            <groupId>org.dows.cloud</groupId>
             <artifactId>router-core</artifactId>
-            <version>${project.version}</version>
         </dependency>
+
+        <!--        <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-actuator</artifactId>
+                </dependency>-->
+        <!--异步日志-->
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+        </dependency>
+        <!--web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+        </dependency>
+
     </dependencies>
+
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

@@ -11,9 +11,6 @@ import org.dows.router.handler.event.TableEventHandler;
 import org.springframework.context.SmartLifecycle;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
-import org.dows.router.handler.binlog.BinlogConsumer;
-import org.dows.router.handler.binlog.BinlogEvent;
-import org.dows.router.handler.binlog.BinlogEventProcessor;
 
 import java.io.IOException;
 import java.util.*;
@@ -33,15 +30,10 @@ public class DebeziumMysqlClient implements SmartLifecycle {
     private final Environment env;
 
     private final List<TableEventHandler> tableEventHandlerList;
-
-    private final BinlogEventProcessor binlogEventProcessor;
-
-
+    private final Map<String, TableEventHandler> tableHandleableMap = new HashMap<>();
     private volatile boolean running = false;
     private DebeziumEngine<ChangeEvent<String, String>> engine;
     private ExecutorService executor;
-    private final Map<String, TableEventHandler> tableHandleableMap = new HashMap<>(tableEventHandlerList.size());
-
 
     @Override
     public void start() {
@@ -148,11 +140,11 @@ public class DebeziumMysqlClient implements SmartLifecycle {
                 return;
             }
             // 处理变更事件
-            tableEventHandler.handle(op , before, after);
+            tableEventHandler.handle(op, before, after);
         } catch (Exception e) {
             log.error("处理 Debezium 事件异常: {}", e.getMessage(), e);
             // 记录错误
-            try {
+            /*try {
                 BinlogEvent failed = new BinlogEvent();
                 failed.setTableName("router_data");
                 failed.setDatabase("dev_bole");
@@ -161,7 +153,7 @@ public class DebeziumMysqlClient implements SmartLifecycle {
                 binlogEventProcessor.recordProcessError(failed, e);
             } catch (Exception ignore) {
                 // 忽略记录错误的异常
-            }
+            }*/
         }
     }
 

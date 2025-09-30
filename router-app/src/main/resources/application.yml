@@ -9,9 +9,9 @@ spring:
   
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/dows_router?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:13306/bolo?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
-    password: password
+    password: 123456
   
   # MyBatis-Flex配置
 mybatis-flex:

@@ -19,11 +19,9 @@ import java.util.concurrent.Future;
 
 
 public class JdbcOffsetBackingStore implements OffsetBackingStore {
-    private static final Logger log = LoggerFactory.getLogger(JdbcOffsetBackingStore.class);
-
     //这里使用雪花算法生成表主键Id，可根据实际情况调整
     public static final Snowflake SNOWFLAKE = new Snowflake(1, 1);
-
+    private static final Logger log = LoggerFactory.getLogger(JdbcOffsetBackingStore.class);
     private String tableName;
     private Connection connection;
 

@@ -9,13 +9,9 @@ public enum SessionTypeEnum {
     LLM(3, "llmRouter");
     @Getter
     private int value;
-
     @Getter
     private String beanCode;
 
-    SessionTypeEnum(int value) {
-
-    }
 
     SessionTypeEnum(int value, String beanCode) {
         this.value = value;

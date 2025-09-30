@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 1.0.0
  */
 @SpringBootApplication
-@MapperScan("org.dows.router.dao.mapper")
 public class RouterApplication {
 
     public static void main(String[] args) {

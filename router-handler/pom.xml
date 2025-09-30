@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.dows.router</groupId>
+        <groupId>org.dows.cloud</groupId>
         <artifactId>dows-router</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
-
     <artifactId>router-handler</artifactId>
-    <name>router-handler</name>
-    <description>处理层</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.dows.router</groupId>
+            <groupId>org.dows.cloud</groupId>
             <artifactId>router-api</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.dows.router</groupId>
+            <groupId>org.dows.cloud</groupId>
             <artifactId>router-dao</artifactId>
-            <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.dows.cloud</groupId>
+            <artifactId>router-email</artifactId>
+        </dependency>
+
+
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
@@ -32,12 +33,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>checker-qual</artifactId>
             <version>3.42.0</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>io.debezium</groupId>
@@ -62,7 +63,6 @@
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <version>8.2.0</version>
         </dependency>
 
 
@@ -71,11 +71,6 @@
             <artifactId>hutool-all</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.dows.router</groupId>
-            <artifactId>router-email</artifactId>
-            <version>1.0.0</version>
-        </dependency>
 
     </dependencies>
 </project>

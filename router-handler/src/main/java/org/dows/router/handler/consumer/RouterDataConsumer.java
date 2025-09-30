@@ -57,10 +57,10 @@ public class RouterDataConsumer {
 
         } catch (Exception e) {
             log.error("从 binlog 消费路由数据失败: routerDataId={}", routerDataEntity.getRouterDataId(), e);
-            
+
             // 更新数据状态为处理失败
             routerDataProducer.updateRouterDataStatus(routerDataEntity.getRouterDataId(), (byte) 9); // 9: 处理失败
-            
+
             throw new RuntimeException("从 binlog 消费路由数据失败", e);
         }
     }
@@ -191,7 +191,7 @@ public class RouterDataConsumer {
 
         // 根据优先级进行不同处理
         if (routerDataEntity.getPriority() != null && routerDataEntity.getPriority() > 5) {
-            log.debug("高优先级数据处理: routerDataId={}, priority={}", 
+            log.debug("高优先级数据处理: routerDataId={}, priority={}",
                     routerDataEntity.getRouterDataId(), routerDataEntity.getPriority());
             // 高优先级处理逻辑
         } else {

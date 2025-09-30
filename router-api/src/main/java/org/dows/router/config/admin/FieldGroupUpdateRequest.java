@@ -1,9 +1,8 @@
 package org.dows.router.config.admin;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
-
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 /**
  * 字段组更新请求

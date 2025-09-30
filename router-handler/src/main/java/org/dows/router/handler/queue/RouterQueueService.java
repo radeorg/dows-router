@@ -38,22 +38,17 @@ public class RouterQueueService implements Lifecycle {
 
     // 数据库待处理队列 - 模拟数据库中的待处理数据
     private final BlockingQueue<RouterRequestTask> dbProcessQueue = new LinkedBlockingQueue<>();
-
-    // 线程池
-    private ExecutorService producerExecutor;
-    private ExecutorService consumerExecutor;
-
     // 统计信息
     private final AtomicLong totalReceived = new AtomicLong(0);
     private final AtomicLong totalProcessed = new AtomicLong(0);
     private final AtomicLong totalFailed = new AtomicLong(0);
-
+    private final RouterDataProducer routerDataProducer;
+    private final RouterDataConsumer routerDataConsumer;
+    // 线程池
+    private ExecutorService producerExecutor;
+    private ExecutorService consumerExecutor;
     // 运行状态
     private volatile boolean running = true;
-
-    private final RouterDataProducer routerDataProducer;
-
-    private final RouterDataConsumer routerDataConsumer;
 
     @Override
     public void init() {

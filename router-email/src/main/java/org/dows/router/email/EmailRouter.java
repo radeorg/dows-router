@@ -3,22 +3,19 @@ package org.dows.router.email;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.dows.router.core.Callback;
 import org.dows.router.core.Routable;
-import org.dows.router.core.RouterFactory;
+import org.dows.router.dao.entity.RouterDataEntity;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class EmailRouter implements Routable {
+public class EmailRouter implements Routable<RouterDataEntity> {
 
 
     @Override
-    public void dispatch(String op, Object beforeEntity, Object afterEntity) {
-
-
-
-        //RouterFactory.getRouter();
+    public void dispatch(String op, RouterDataEntity beforeEntity, RouterDataEntity afterEntity, Callback callback) {
         /**
          * 邮箱地址
          * lait.zhang@gmail.com
@@ -31,6 +28,5 @@ public class EmailRouter implements Routable {
          * imap.gmail.com
          * 端口号
          */
-        //
     }
 }
