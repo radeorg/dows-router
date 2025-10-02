@@ -4,22 +4,37 @@ debezium:
     name: mysql-connector
     topic.prefix: router-
     connector.class: io.debezium.connector.mysql.MySqlConnector
-    database.hostname: localhost
-    database.user: debezium
-    database.password: 123456
+    database.hostname: 115.159.24.40
+    database.user: root
+    database.password: radeorg123!
     database.port: 13306
     database.server.id: 184055
     database.server.name: mysql-server
     database.include.list: dev_bole
     table.include.list: dev_bole.router_data
     snapshot.mode: initial
+
+    # 连接相关配置
+    connect.timeout.ms: 30000
+    connect.keep.alive: true
+    connect.keep.alive.interval.ms: 60000
+
+    # 重试配置
+    errors.retry.timeout: -1
+    errors.retry.delay: 1000
+
+    # 偏移量管理
     offset.flush.interval.ms: 5000
     offset.storage: org.apache.kafka.connect.storage.FileOffsetBackingStore
     offset.storage.file.filename: mysql-offset.dat
+
+    # Schema 管理
     include.schema.changes: false
     schema.history.internal.store.only.captured.tables.ddl: true
     schema.history.internal: io.debezium.storage.file.history.FileSchemaHistory
     schema.history.internal.file.filename: schema-history.dat
+
+    # 数据转换
     value.converter: org.apache.kafka.connect.json.JsonConverter
     value.converter.schemas.enable: false
 

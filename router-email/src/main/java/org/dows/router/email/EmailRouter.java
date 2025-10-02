@@ -1,6 +1,7 @@
 package org.dows.router.email;
 
 
+import cn.hutool.json.JSONUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.dows.router.core.Callback;
@@ -28,6 +29,11 @@ public class EmailRouter implements Routable<RouterDataEntity> {
          * imap.gmail.com
          * 端口号
          */
-        callback.onSuccess(null);
+        EmailReadFinishedEvent emailReadFinishedEvent = new EmailReadFinishedEvent();
+        emailReadFinishedEvent.setEventData(afterEntity);
+        emailReadFinishedEvent.setEventName("emailReadFinished");
+        emailReadFinishedEvent.setSource("EmailRouter");
+        log.info("email read finished event: {}", JSONUtil.toJsonPrettyStr(emailReadFinishedEvent));
+        callback.onSuccess(emailReadFinishedEvent);
     }
 }

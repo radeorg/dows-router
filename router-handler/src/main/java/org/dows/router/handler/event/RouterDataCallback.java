@@ -1,6 +1,7 @@
 package org.dows.router.handler.event;
 
 import cn.hutool.extra.spring.SpringUtil;
+import cn.hutool.json.JSONUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.dows.router.core.Callback;
@@ -20,6 +21,7 @@ public class RouterDataCallback implements Callback {
 
     @Override
     public void onSuccess(RouterEvent routerEvent) {
+        log.info("router data callback event：{}", JSONUtil.toJsonPrettyStr(routerEvent));
         // 获取事件远
         String source = routerEvent.getSource();
         // 获取事件名

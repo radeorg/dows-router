@@ -62,6 +62,9 @@ public interface TableEventHandler<T> {
     }
 
     default T convert(JSONObject jsonObject) {
+        if (jsonObject == null) {
+            return null;
+        }
         // 获取实际的泛型类型参数
         Type genericInterface = null;
         Type[] genericInterfaces = this.getClass().getGenericInterfaces();
