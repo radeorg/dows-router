@@ -28,5 +28,6 @@ public class EmailRouter implements Routable<RouterDataEntity> {
          * imap.gmail.com
          * 端口号
          */
+        callback.onSuccess(null);
     }
 }

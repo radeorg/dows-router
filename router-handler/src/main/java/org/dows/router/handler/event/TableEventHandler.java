@@ -57,7 +57,6 @@ public interface TableEventHandler<T> {
                 router.dispatch(op, beforeEntity, afterEntity, callback);
             } catch (Exception e) {
                 // 异常处理，可根据实际需求调整
-                e.printStackTrace();
             }
         });
     }

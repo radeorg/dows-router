@@ -1,5 +1,6 @@
 package org.dows.router.handler.event;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.dows.router.dao.entity.RouterDataEntity;
 import org.springframework.stereotype.Component;
@@ -8,8 +9,10 @@ import java.util.Objects;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class RouterDataTableEventHandler implements TableEventHandler<RouterDataEntity> {
 
+    private final RouterDataCallback routerDataCallback;
 
     @Override
     public String getTableName() {
@@ -34,10 +37,7 @@ public class RouterDataTableEventHandler implements TableEventHandler<RouterData
             return;
         }
         Integer sessionType = after.getSessionType();
-
         // 提前定义好callback对象，用于异步线程种处理完成后的回调
-        RouterDataCallback routerDataCallback = new RouterDataCallback();
-
         dispatch(sessionType, op, before, after, routerDataCallback);
         /*CompletableFuture<DispatchResult> future = CompletableFuture.supplyAsync(() -> {
             return dispatch(sessionType, op, before, after, routerDataCallback);

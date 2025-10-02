@@ -1,0 +1,12 @@
+router:
+  trigger:
+    1-abcd-dcba:
+      - source: ssm
+        event: update
+        target: ddd
+        protocol: bean
+
+      - source: ssm1
+        event: update1
+        target: ddd
+        protocol: bean

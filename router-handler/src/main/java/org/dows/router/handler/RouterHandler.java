@@ -1,5 +1,6 @@
 package org.dows.router.handler;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.dows.router.handler.model.RouterRequest;
 import org.dows.router.handler.queue.QueueStatus;
@@ -16,10 +17,11 @@ import java.util.List;
  */
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class RouterHandler {
 
 
-    private RouterQueueService queueService;
+    private final RouterQueueService queueService;
 
     /**
      * 提交路由请求

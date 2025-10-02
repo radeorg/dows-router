@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.dows.router.core.Lifecycle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 
@@ -39,9 +40,10 @@ public class RouterConfig {
     /**
      * 应用关闭时的清理工作
      */
-    @EventListener
-    public void onApplicationShutdown() {
+    @EventListener/*(ContextClosedEvent.class)*/
+    public void onApplicationShutdown(ContextClosedEvent event) {
         try {
+            log.info("event :{}", event);
             log.info("应用关闭中，开始清理异步路由队列服务...");
             lifecycle.destroy();
             log.info("异步路由队列服务清理完成");

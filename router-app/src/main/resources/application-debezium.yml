@@ -1,0 +1,49 @@
+debezium:
+  # 方式1: 直接属性映射（推荐）
+  properties:
+    name: mysql-connector
+    topic.prefix: router-
+    connector.class: io.debezium.connector.mysql.MySqlConnector
+    database.hostname: localhost
+    database.user: debezium
+    database.password: 123456
+    database.port: 13306
+    database.server.id: 184055
+    database.server.name: mysql-server
+    database.include.list: dev_bole
+    table.include.list: dev_bole.router_data
+    snapshot.mode: initial
+    offset.flush.interval.ms: 5000
+    offset.storage: org.apache.kafka.connect.storage.FileOffsetBackingStore
+    offset.storage.file.filename: mysql-offset.dat
+    include.schema.changes: false
+    schema.history.internal.store.only.captured.tables.ddl: true
+    schema.history.internal: io.debezium.storage.file.history.FileSchemaHistory
+    schema.history.internal.file.filename: schema-history.dat
+    value.converter: org.apache.kafka.connect.json.JsonConverter
+    value.converter.schemas.enable: false
+
+  # 方式2: 结构化配置（备选）
+  # name: mysql-connector
+  # topic-prefix: router-
+  # mysql:
+  #   hostname: localhost
+  #   user: debezium
+  #   password: 123456
+  #   port: 13306
+  #   server-id: 184055
+  #   server-name: mysql-server
+  #   database-include: dev_bole
+  #   table-include: dev_bole.router_data
+  # offset:
+  #   flush-interval-ms: 5000
+  #   storage: org.apache.kafka.connect.storage.FileOffsetBackingStore
+  #   file: mysql-offset.dat
+  # schema:
+  #   include-changes: false
+  #   store-only-captured-tables-ddl: true
+  #   history-internal: io.debezium.storage.file.history.FileSchemaHistory
+  #   history-file: schema-history.dat
+  # converter:
+  #   value: org.apache.kafka.connect.json.JsonConverter
+  #   schemas-enable: false

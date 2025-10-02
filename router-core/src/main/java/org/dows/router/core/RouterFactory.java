@@ -18,7 +18,7 @@ public class RouterFactory {
 
     public static Routable getRouter(int sessionType) {
         SessionTypeEnum sessionTypeEnum = SessionTypeEnum.getByType(sessionType);
-        Routable routable = routerTable.get(sessionTypeEnum.getBeanCode());
+        Routable<?> routable = routerTable.get(sessionTypeEnum.getBeanCode());
         if (routable != null) {
             return routable;
         }

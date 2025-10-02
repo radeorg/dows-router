@@ -119,8 +119,7 @@ public class RouterQueueService implements Lifecycle {
                 task.setQueueTime(LocalDateTime.now());
                 totalReceived.incrementAndGet();
 
-                log.debug("路由任务已加入队列: taskId={}, appId={}, priority={}",
-                        task.getTaskId(), appId, priority);
+                log.debug("路由任务已加入队列: taskId={}, appId={}, priority={}", task.getTaskId(), appId, priority);
                 return task.getTaskId();
             } else {
                 // 队列满了，执行降级策略

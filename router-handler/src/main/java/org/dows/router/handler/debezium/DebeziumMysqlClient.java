@@ -7,6 +7,7 @@ import io.debezium.engine.DebeziumEngine;
 import io.debezium.engine.format.Json;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.dows.router.core.DebeziumProperties;
 import org.dows.router.handler.event.TableEventHandler;
 import org.springframework.context.SmartLifecycle;
 import org.springframework.core.env.Environment;
@@ -29,6 +30,8 @@ public class DebeziumMysqlClient implements SmartLifecycle {
 
     private final Environment env;
 
+    private final DebeziumProperties debeziumProperties;
+
     private final List<TableEventHandler> tableEventHandlerList;
     private final Map<String, TableEventHandler> tableHandleableMap = new HashMap<>();
     private volatile boolean running = false;
@@ -47,7 +50,7 @@ public class DebeziumMysqlClient implements SmartLifecycle {
 
             engine = DebeziumEngine
                     .create(Json.class)
-                    .using(props)
+                    .using(debeziumProperties.getProperties())
                     .notifying(this::processRecords)
                     .build();
 
@@ -134,7 +137,7 @@ public class DebeziumMysqlClient implements SmartLifecycle {
             log.info("ddl: {}", (Objects.nonNull(ddl) ? ddl : ""));
 
             // 处理表变更事件
-            TableEventHandler tableEventHandler = tableHandleableMap.get(table);
+            TableEventHandler<?> tableEventHandler = tableHandleableMap.get(table);
             if (tableEventHandler == null) {
                 log.warn("未找到处理表 {} 的处理器，忽略", table);
                 return;

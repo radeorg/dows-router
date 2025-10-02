@@ -1,12 +1,14 @@
 package org.dows.router.core;
 
+import java.util.EventObject;
+
 public interface Callback {
 
-    default void onSuccess(Object data) {
+    default void onSuccess(RouterEvent routerEvent) {
 
     }
 
-    default void onFailure(String message) {
+    default void onFailure(RouterEvent routerEvent) {
 
     }
 
