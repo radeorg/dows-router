@@ -16,7 +16,7 @@ spring:
     name: dows-hrm
     appId: 1
   profiles:
-    include: mysql,mybatis,caffeine,ai,thread,hrm,oss,debezium,trigger
+    include: mysql,mybatis,caffeine,ai,thread,oss,debezium,trigger,rade
     active: dev
 
   jackson:

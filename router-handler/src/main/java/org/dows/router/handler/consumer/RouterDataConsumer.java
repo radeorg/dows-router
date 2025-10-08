@@ -2,8 +2,8 @@ package org.dows.router.handler.consumer;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.dows.router.dao.entity.RouterDataEntity;
-import org.dows.router.dao.mapper.RouterDataMapper;
+import org.dows.router.entity.RouterDataEntity;
+import org.dows.router.mapper.RouterDataMapper;
 import org.dows.router.handler.model.RouterRequestTask;
 import org.dows.router.handler.model.TaskStatus;
 import org.dows.router.handler.producer.RouterDataProducer;

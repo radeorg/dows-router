@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author lait.zhang@gmail.com
  * @since 1.0.0
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"org.dows.router", "org.dows.rade"})
 public class RouterApplication {
 
     public static void main(String[] args) {

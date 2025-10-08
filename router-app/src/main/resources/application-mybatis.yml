@@ -4,8 +4,8 @@ mybatis-flex:
   #MyBatis 配置文件位置，如果有单独的 MyBatis 配置，需要将其路径配置到 configLocation 中
   #  configuration:
   #MyBatis Mapper 所对应的 XML 文件位置，如果在 Mapper 中有自定义的方法（XML 中有自定义的实现），需要进行该配置，指定 Mapper 所对应的 XML 文件位置
-  mapper-locations: [ "classpath:mapper/*.xml" ]
-  type-aliases-package: org.dows.router.dao.entity
+  #mapper-locations: [ "classpath:mapper/*.xml" ]
+  type-aliases-package: org.dows.router.entity
   global-config:
     print-banner: false
   # MyBatis-Flex配置

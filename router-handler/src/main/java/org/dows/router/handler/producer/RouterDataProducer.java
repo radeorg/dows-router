@@ -2,12 +2,12 @@ package org.dows.router.handler.producer;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.dows.router.dao.entity.RouterDataEntity;
-import org.dows.router.dao.entity.RouterSessionEntity;
-import org.dows.router.dao.mapper.RouterDataMapper;
-import org.dows.router.dao.mapper.RouterSessionMapper;
+import org.dows.router.entity.RouterDataEntity;
+import org.dows.router.entity.RouterSessionEntity;
 import org.dows.router.handler.model.RouterRequestTask;
 import org.dows.router.handler.model.TaskStatus;
+import org.dows.router.mapper.RouterDataMapper;
+import org.dows.router.mapper.RouterSessionMapper;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -65,12 +65,42 @@ public class RouterDataProducer {
         }
     }
 
+
+    private RouterDataEntity prepareRouterDataEntity(RouterRequestTask task) {
+        RouterDataEntity entity = RouterDataEntity.builder().build();
+        entity.setRouterDataId(System.currentTimeMillis());
+        // 设置基本信息
+        entity.setOperatorId(task.getOperatorId());
+        entity.setRouterAccountId(task.getRouterAccountId());
+        entity.setRouterChannelId(task.getRouterChannelId());
+        entity.setRetry(task.getRetry());
+        entity.setSessionType(task.getSessionType());
+        entity.setPriority(task.getPriority());
+        entity.setRequestId(task.getRequestId());
+        entity.setData(task.getRawData());
+        entity.setAppId(task.getAppId());
+
+        // 设置时间信息
+        LocalDateTime now = LocalDateTime.now();
+        entity.setDay(now.getDayOfMonth());
+        entity.setMonth(now.getMonthValue());
+        entity.setYear(now.getYear());
+        entity.setTs(now);
+        entity.setUt(now);
+
+        // 设置状态 - 同样需要恢复这些被注释的必要字段
+        entity.setState(0); // 0: 待处理
+        entity.setDeleted(0); // 0: 未删除
+
+        return entity;
+    }
     /**
      * 准备 RouterDataEntity
      */
-    private RouterDataEntity prepareRouterDataEntity(RouterRequestTask task) {
-        RouterDataEntity entity = new RouterDataEntity();
-
+    /*private RouterDataEntity prepareRouterDataEntity(RouterRequestTask task) {
+        RouterDataEntity entity = RouterDataEntity.builder().build();
+        //
+        //entity.setRouterDataId(System.currentTimeMillis());
         // 设置基本信息
         entity.setOperatorId(task.getOperatorId());
         entity.setRouterAccountId(task.getRouterAccountId());
@@ -91,11 +121,11 @@ public class RouterDataProducer {
         entity.setUt(now);
 
         // 设置状态
-        entity.setState((byte) 0); // 0: 待处理
-        entity.setDeleted((byte) 0); // 0: 未删除
+        //entity.setState((byte) 0); // 0: 待处理
+        //entity.setDeleted((byte) 0); // 0: 未删除
 
         return entity;
-    }
+    }*/
 
     /**
      * 准备 RouterSessionEntity
@@ -140,10 +170,11 @@ public class RouterDataProducer {
      */
     public void updateRouterDataStatus(Long routerDataId, Byte newState) {
         try {
-            RouterDataEntity entity = new RouterDataEntity();
-            entity.setRouterDataId(routerDataId);
-            entity.setState(newState);
-            entity.setUt(LocalDateTime.now());
+            RouterDataEntity entity = RouterDataEntity.builder()
+                    .routerDataId(routerDataId)
+                    //.state(newState)
+                    .ut(LocalDateTime.now())
+                    .build();
 
             //
             //routerDataMapper.updateByQuery(entity, query -> query.where(RouterDataEntity::getRouterDataId).eq(entity.getRouterDataId()));

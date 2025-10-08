@@ -62,7 +62,7 @@ public class RouterQueueService implements Lifecycle {
 
         // 启动数据库写入线程(3个并发写入)
         for (int i = 0; i < DB_WRITER_THREADS; i++) {
-            producerExecutor.submit(this::startProducer);
+            producerExecutor.submit(this::startWriteDatabase);
         }
 
         // 注意：数据消费现在通过 binlog 进行，这里的消费线程主要用于兼容性
@@ -99,7 +99,7 @@ public class RouterQueueService implements Lifecycle {
      */
     public String submitRouterRequest(String rawData, String appId, Long operatorId, Integer sessionType, Integer priority) {
         try {
-            // 创建任务
+            //todo 创建任务，组装数据
             RouterRequestTask task = new RouterRequestTask();
             task.setTaskId(UUID.randomUUID().toString());
             task.setTaskType(TaskType.ROUTER_DATA);
@@ -142,7 +142,7 @@ public class RouterQueueService implements Lifecycle {
     /**
      * 数据库写入工作线程
      */
-    private void startProducer() {
+    private void startWriteDatabase() {
         log.info("数据库写入线程启动: {}", Thread.currentThread().getName());
 
         while (running) {
@@ -159,7 +159,7 @@ public class RouterQueueService implements Lifecycle {
                 task.setStatus(TaskStatus.DB_WRITTEN);
                 task.setDbWriteTime(LocalDateTime.now());
                 // 这里该为binlog消费
-                dbProcessQueue.offer(task);
+                //dbProcessQueue.offer(task);
 
                 log.debug("任务已写入数据库并加入处理队列: taskId={}", task.getTaskId());
 

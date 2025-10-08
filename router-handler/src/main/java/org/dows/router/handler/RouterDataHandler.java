@@ -1,6 +1,6 @@
 package org.dows.router.handler;
 
-import org.dows.router.dao.service.RouterDataService;
+import org.dows.router.service.RouterDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

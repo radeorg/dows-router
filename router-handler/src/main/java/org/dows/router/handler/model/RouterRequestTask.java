@@ -1,8 +1,8 @@
 package org.dows.router.handler.model;
 
 import lombok.Data;
-import org.dows.router.dao.entity.RouterDataEntity;
-import org.dows.router.dao.entity.RouterSessionEntity;
+import org.dows.router.entity.RouterDataEntity;
+import org.dows.router.entity.RouterSessionEntity;
 
 import java.time.LocalDateTime;
 

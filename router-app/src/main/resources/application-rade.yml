@@ -1,0 +1,17 @@
+rade:
+  jackson:
+    timestamp: true
+    big-number-to-string: true
+  cacheName: hrm
+  encryptor:
+    enable: true
+    algorithm: AES
+
+  log:
+    file:
+      level: INFO
+      logHome: /logs
+      timeTriggeringPolicy: 30
+    sql:
+      printSql: true
+

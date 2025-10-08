@@ -2,7 +2,7 @@ package org.dows.router.handler.event;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.dows.router.dao.entity.RouterDataEntity;
+import org.dows.router.entity.RouterDataEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
