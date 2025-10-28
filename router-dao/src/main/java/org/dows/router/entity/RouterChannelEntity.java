@@ -7,7 +7,6 @@ import com.mybatisflex.annotation.Table;
 import com.mybatisflex.core.keygen.KeyGenerators;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import org.dows.rade.crud.BaseEntity;
 
 import java.time.LocalDateTime;
 
@@ -20,7 +19,7 @@ import java.time.LocalDateTime;
 @Table("router_channel")
 @Data
 @Schema(description = "路由通道")
-public class RouterChannelEntity  extends BaseEntity<RouterChannelEntity> {
+public class RouterChannelEntity  {
 
     @Id(keyType = KeyType.Generator, value = KeyGenerators.snowFlakeId)
     @Schema(description = "路由通道ID")

@@ -8,8 +8,6 @@ import com.mybatisflex.core.keygen.KeyGenerators;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.dows.rade.crud.BaseEntity;
 
 import java.time.LocalDateTime;
 
@@ -21,13 +19,12 @@ import java.time.LocalDateTime;
  */
 @Builder
 @Table("router_data")
-@EqualsAndHashCode(callSuper = true)
-@Data(staticConstructor = "create")
+@Data
 @Schema(description = "路由数据")
-public class RouterDataEntity extends BaseEntity<RouterDataEntity> {
+public class RouterDataEntity  {
 
 
-    @Id(keyType = KeyType.Generator, value = KeyGenerators.flexId)
+    @Id(keyType = KeyType.Generator, value = KeyGenerators.snowFlakeId)
     @Schema(description = "路由数据ID")
     private Long routerDataId;
 

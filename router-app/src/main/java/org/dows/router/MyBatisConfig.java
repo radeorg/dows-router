@@ -21,13 +21,13 @@ public class MyBatisConfig {
     @Autowired
     private DataSource dataSource;
 
-    @Bean
-    public SqlSessionFactory sqlSessionFactory() throws Exception {
-        SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource);
-        // 设置其他必要配置
-        return sessionFactory.getObject();
-    }
+//    @Bean
+//    public SqlSessionFactory sqlSessionFactory() throws Exception {
+//        SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
+//        sessionFactory.setDataSource(dataSource);
+//        // 设置其他必要配置
+//        return sessionFactory.getObject();
+//    }
 
     @Value("${rade.log.sql.printSql:false}")
     private boolean printSql;

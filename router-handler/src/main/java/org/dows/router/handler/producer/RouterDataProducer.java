@@ -2,6 +2,8 @@ package org.dows.router.handler.producer;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.dows.router.dao.RouterDataDao;
+import org.dows.router.dao.RouterSessionDao;
 import org.dows.router.entity.RouterDataEntity;
 import org.dows.router.entity.RouterSessionEntity;
 import org.dows.router.handler.model.RouterRequestTask;
@@ -24,8 +26,8 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class RouterDataProducer {
 
-    private final RouterDataMapper routerDataMapper;
-    private final RouterSessionMapper routerSessionMapper;
+    private final RouterDataDao routerDataDao;
+    private final RouterSessionDao routerSessionDao;
 
     /**
      * 处理任务并保存到数据库，构建RouterDataEntity 和RouterSessionEntity
@@ -41,7 +43,7 @@ public class RouterDataProducer {
             task.setRouterDataEntity(routerDataEntity);
 
             // 2. 写入 RouterData 表
-            routerDataMapper.insert(routerDataEntity);
+            routerDataDao.save(routerDataEntity);
             log.debug("RouterData 已写入数据库: routerDataId={}", routerDataEntity.getRouterDataId());
 
             // 3. 如果需要，准备 RouterSessionEntity
@@ -50,7 +52,7 @@ public class RouterDataProducer {
                 task.setRouterSessionEntity(sessionEntity);
 
                 // 这里可以添加 RouterSessionMapper 来保存会话数据
-                routerSessionMapper.insert(sessionEntity);
+                routerSessionDao.save(sessionEntity);
                 log.debug("RouterSession 已准备: routerDataId={}", routerDataEntity.getRouterDataId());
             }
 

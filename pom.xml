@@ -19,7 +19,7 @@
         <revision>1.0.0-SNAPSHOT</revision>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <mybatis-flex.version>1.7.8</mybatis-flex.version>
+        <mybatis-flex.version>1.11.3</mybatis-flex.version>
         <postgresql.version>42.6.0</postgresql.version>
 
         <debezium.version>3.2.3.Final</debezium.version>
@@ -115,6 +115,16 @@
                 <groupId>io.debezium</groupId>
                 <artifactId>debezium-bom</artifactId>
                 <version>3.2.3.Final</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
+
+            <dependency>
+                <groupId>com.mybatis-flex</groupId>
+                <artifactId>mybatis-flex-dependencies</artifactId>
+                <version>${mybatis-flex.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

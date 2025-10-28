@@ -1,6 +1,6 @@
 package org.dows.router.handler;
 
-import org.dows.router.service.RouterDataService;
+import org.dows.router.dao.RouterDataDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class RouterDataHandler {
 
     @Autowired
-    private RouterDataService routerDataService;
+    private RouterDataDao routerDataDao;
 
     // TODO: 实现路由数据处理逻辑
 }
