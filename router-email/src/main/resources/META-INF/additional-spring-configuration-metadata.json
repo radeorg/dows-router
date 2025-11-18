@@ -1,0 +1,66 @@
+{
+  "groups": [],
+  "properties": [
+    {
+      "name": "email.username",
+      "type": "java.lang.String",
+      "description": "发件人邮箱"
+    },
+    {
+      "name": "email.password",
+      "type": "java.lang.String",
+      "description": "发件人邮箱密码（qq邮箱、163邮箱需要的是邮箱授权码，新浪邮箱直接是邮箱登录密码）"
+    },
+    {
+      "name": "email.senderNickname",
+      "type": "java.lang.String",
+      "description": "发件人定制别名"
+    },
+    {
+      "name": "email.mailSmtpHost",
+      "type": "org.dows.email.constant.SmtpHostEnum",
+      "sourceType": "org.dows.email.constant.SmtpHostEnum",
+      "description": "支持的邮箱Host"
+    },
+    {
+      "name": "email.smtpHost",
+      "type": "java.lang.String",
+      "description": "邮箱Host"
+    },
+    {
+      "name": "email.smtpPort",
+      "type": "java.lang.Integer",
+      "description": "邮箱port"
+    },
+    {
+      "name": "email.mailDebug",
+      "type": "java.lang.Boolean",
+      "defaultValue": false,
+      "description": "是否开启debug"
+    },
+    {
+      "name": "email.customMiniEmail",
+      "type": "java.lang.String",
+      "description": "自定义 MiniEmail实现类路径。类必须继承 BaseMiniEmail"
+    },
+    {
+      "name": "email.mailSmtpAuth",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否开启账号密码鉴权"
+    },
+    {
+      "name": "email.mailSmtpSslEnable",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "是否开启SSL"
+    },
+    {
+      "name": "email.mailSmtpTimeout",
+      "type": "java.lang.Long",
+      "defaultValue": 10000,
+      "description": "超时时间（毫秒）"
+    }
+  ],
+  "hints": []
+}
